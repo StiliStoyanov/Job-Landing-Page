@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { Offer } from '../offer.interface';
 import { ViewChild } from '@angular/core'
 import { FormBuilder, FormGroup, NgForm, Validators }   from '@angular/forms';
@@ -8,9 +8,10 @@ import { FormBuilder, FormGroup, NgForm, Validators }   from '@angular/forms';
   templateUrl: './post-offer-form.component.html',
   styleUrls: ['./post-offer-form.component.css']
 })
-export class PostOfferFormComponent implements OnInit {
+export class PostOfferFormComponent implements OnInit, OnChanges {
 
   @Output() postSubmitted = new EventEmitter<Offer>()
+  @Input() offer!: Offer;
   formGroup!: FormGroup ;
 
 
@@ -20,13 +21,17 @@ export class PostOfferFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.formGroup= this.fb.group({
-      title:['',[Validators.required]],
-      description:['',[Validators.required]]
+      title:[this.offer.title,[Validators.required]],
+      description:[this.offer.description,[Validators.required]]
     })
     
   }
+  ngOnChanges(): void {
+    this.formGroup.get('title')?.setValue(this.offer.title)
+    this.formGroup.get('description')?.setValue(this.offer.description)
+
+  }
   onSubmit(): void{
-    console.log(this.formGroup);
     
     const offer: Offer = {
       ...this.formGroup.value,

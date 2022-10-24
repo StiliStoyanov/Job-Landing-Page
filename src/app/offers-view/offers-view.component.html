@@ -5,8 +5,7 @@
         <h5 class="card-title">{{ offer.id }}</h5>
         <h5 class="card-title">{{ offer.title }}</h5>
         <p class="card-text">{{ offer.description }}</p>
-        <a href="#" class="card-link">Card link</a>
-        <a href="#" class="card-link">Another link</a>
+       <button type="button" class="btn btn-link" (click)="onEdit(offer.id!)">Edit</button>
       </div>
     </div>
   </div>

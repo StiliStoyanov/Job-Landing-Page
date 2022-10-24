@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { Offer } from '../offer.interface';
 
 @Component({
@@ -9,8 +9,13 @@ import { Offer } from '../offer.interface';
 export class OffersViewComponent  {
 
   @Input() offers?: Offer[]
+  @Output() offerSelected = new EventEmitter<Offer>()
   constructor() {
    
+   }
+   onEdit(id: number):void {
+    const offer = this.offers?.find(o=>o.id== id);
+    this.offerSelected.emit(offer)        
    }
 
  

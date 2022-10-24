@@ -12,6 +12,8 @@ import { OffersViewComponent } from './offers-view/offers-view.component';
 import { OfferListComponent } from './offer-list/offer-list.component';
 import { FieldErrorMessageComponent } from './field-error-message/field-error-message.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import {HttpClientModule} from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
@@ -28,7 +30,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
