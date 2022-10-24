@@ -21,8 +21,13 @@ export class OffersService{
     createOffer(offer: Offer): Observable<any>{
         return this.http.post(this.url, offer)
     }
-    updateOffer(offer:Offer): Observable<any>{
-        const url = `${this.url}/${offer.id}`
-        return this.http.put(this.url, offer)
+    updateOffer(offer:Offer, offerID?: number): Observable<any>{
+        const url = `${this.url}/${offerID}`
+        return this.http.put(url, offer)
+    }
+    deleteOffer(id:number):Observable<any>{
+        const url = `${this.url}/${id}`
+        return this.http.delete(url)
+        
     }
 }

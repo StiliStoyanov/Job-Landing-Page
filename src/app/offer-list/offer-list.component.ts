@@ -13,13 +13,15 @@ export class OfferListComponent implements OnInit, OnDestroy {
 
   offers!: Offer[];
   selectedOffer!: Offer;
+  offerId?: number
 
   destroy$ = new Subject<boolean>();
 
   constructor(private offersService:OffersService) { 
     this.selectedOffer={
       title:'',
-      description:''
+      description:'',
+      
     }
   }
 
@@ -31,21 +33,41 @@ export class OfferListComponent implements OnInit, OnDestroy {
     this.destroy$.unsubscribe();
   }
   onPostSubmit(offer: Offer):void{
-    const newOffer = {
-      ...offer,
-      id: this.offers!.length + 1
+    if (!this.offerId) {
+      this.offersService.createOffer({...offer}).pipe(
+        takeUntil(this.destroy$)
+      ).subscribe(()=>{
+        this.getContent();
+      },(error)=>{
+        console.log(error);
+      })
+      return; 
     }
-     this.offersService.createOffer(newOffer).subscribe(()=>{
-      this.getContent();
-     }, (error)=>{
+    this.offersService.updateOffer(offer, this.offerId).pipe(
+      takeUntil(this.destroy$)
+    ).subscribe(()=>{
+      this.getContent()
+    }, (error)=> {
       console.log(error);
-      
-     });
+    })
+    this.offerId = undefined
+
+   
   }
 
   onOfferSelect(offer:Offer): void{
     this.selectedOffer= offer;
-    
+    this.offerId = offer.id
+  }
+  onOfferDelete(offerId: number):void {
+    this.offersService.deleteOffer(offerId).pipe(
+      takeUntil(this.destroy$)
+    ).subscribe(()=>{
+      this.getContent()
+    },(error)=>{
+      console.log(error);
+      
+    })
   }
 
   private getContent(): void{

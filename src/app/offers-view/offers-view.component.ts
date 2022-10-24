@@ -10,6 +10,7 @@ export class OffersViewComponent  {
 
   @Input() offers?: Offer[]
   @Output() offerSelected = new EventEmitter<Offer>()
+  @Output() offerDeleted = new EventEmitter<number>()
   constructor() {
    
    }

@@ -27,8 +27,10 @@ export class PostOfferFormComponent implements OnInit, OnChanges {
     
   }
   ngOnChanges(): void {
-    this.formGroup.get('title')?.setValue(this.offer.title)
-    this.formGroup.get('description')?.setValue(this.offer.description)
+    if (this.formGroup) {
+      this.formGroup.get('title')?.setValue(this.offer.title)
+      this.formGroup.get('description')?.setValue(this.offer.description)
+    }
 
   }
   onSubmit(): void{
