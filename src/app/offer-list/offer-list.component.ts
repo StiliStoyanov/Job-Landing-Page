@@ -34,13 +34,7 @@ export class OfferListComponent implements OnInit, OnDestroy {
   }
   onPostSubmit(offer: Offer):void{
     if (!this.offerId) {
-      this.offersService.createOffer({...offer}).pipe(
-        takeUntil(this.destroy$)
-      ).subscribe(()=>{
-        this.getContent();
-      },(error)=>{
-        console.log(error);
-      })
+     
       return; 
     }
     this.offersService.updateOffer(offer, this.offerId).pipe(

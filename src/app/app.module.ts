@@ -13,7 +13,18 @@ import { OfferListComponent } from './offer-list/offer-list.component';
 import { FieldErrorMessageComponent } from './field-error-message/field-error-message.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
+import { Route, RouterModule } from '@angular/router';
 
+const routes: Route[]=[
+  {
+    path: 'job-offers',
+    component:  OfferListComponent,
+  },
+  {
+    path: 'job-offers/create',
+    component: PostOfferFormComponent
+  }
+]
 
 @NgModule({
   declarations: [
@@ -31,7 +42,8 @@ import {HttpClientModule} from '@angular/common/http';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    RouterModule.forRoot(routes)
   ],
   providers: [],
   bootstrap: [AppComponent]

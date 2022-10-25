@@ -2,6 +2,8 @@ import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChange
 import { Offer } from '../offer.interface';
 import { ViewChild } from '@angular/core'
 import { FormBuilder, FormGroup, NgForm, Validators }   from '@angular/forms';
+import { OffersService } from '../offers.service';
+import { take } from 'rxjs';
 
 @Component({
   selector: 'app-post-offer-form',
@@ -11,12 +13,15 @@ import { FormBuilder, FormGroup, NgForm, Validators }   from '@angular/forms';
 export class PostOfferFormComponent implements OnInit, OnChanges {
 
   @Output() postSubmitted = new EventEmitter<Offer>()
-  @Input() offer!: Offer;
+   offer!: Offer;
   formGroup!: FormGroup ;
 
 
-  constructor(private fb: FormBuilder) {
- 
+  constructor(private fb: FormBuilder, private offersService: OffersService) {
+    this.offer={
+      title: '',
+      description: ''
+    }
    }
 
   ngOnInit(): void {
@@ -39,7 +44,15 @@ export class PostOfferFormComponent implements OnInit, OnChanges {
       ...this.formGroup.value,
 
     }
-    this.postSubmitted.emit(offer)
+    this.offersService.createOffer({...offer}).pipe(
+      take(1)
+    ).subscribe(()=>{
+      console.log("success");
+      
+    },(error)=>{
+      console.log(error);
+    })
+
   }
 
 }
