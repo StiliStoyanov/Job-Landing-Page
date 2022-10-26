@@ -1,6 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
+import { observableToBeFn } from "rxjs/internal/testing/TestScheduler";
 import { Offer } from "./offer.interface";
 
 
@@ -21,13 +22,21 @@ export class OffersService{
     createOffer(offer: Offer): Observable<any>{
         return this.http.post(this.url, offer)
     }
-    updateOffer(offer:Offer, offerID?: number): Observable<any>{
-        const url = `${this.url}/${offerID}`
+    updateOffer(offer:Offer): Observable<any>{
+        const url = `${this.url}/${offer.id}`
+        console.log(offer);
+        
         return this.http.put(url, offer)
+        
+        
     }
     deleteOffer(id:number):Observable<any>{
         const url = `${this.url}/${id}`
         return this.http.delete(url)
-        
+    }
+    getOffer(id:number): Observable<Offer>{
+
+        const url = `${this.url}/${id}`;
+        return this.http.get<Offer>(url)
     }
 }

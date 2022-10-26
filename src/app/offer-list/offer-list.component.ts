@@ -37,20 +37,14 @@ export class OfferListComponent implements OnInit, OnDestroy {
      
       return; 
     }
-    this.offersService.updateOffer(offer, this.offerId).pipe(
-      takeUntil(this.destroy$)
-    ).subscribe(()=>{
-      this.getContent()
-    }, (error)=> {
-      console.log(error);
-    })
-    this.offerId = undefined
+   
 
    
   }
 
   onOfferSelect(offer:Offer): void{
     this.selectedOffer= offer;
+    
     this.offerId = offer.id
   }
   onOfferDelete(offerId: number):void {

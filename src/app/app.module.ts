@@ -23,6 +23,10 @@ const routes: Route[]=[
   {
     path: 'job-offers/create',
     component: PostOfferFormComponent
+  },
+  {
+    path: 'job-offers/edit/:id',
+    component: PostOfferFormComponent
   }
 ]
 

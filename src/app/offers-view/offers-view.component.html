@@ -5,7 +5,7 @@
         <h5 class="card-title">{{ offer.id }}</h5>
         <h5 class="card-title">{{ offer.title }}</h5>
         <p class="card-text">{{ offer.description }}</p>
-       <button type="button" class="btn btn-link" (click)="onEdit(offer.id!)">Edit</button>
+        <a class="btn btn-link" [routerLink]="['/job-offers', 'edit', offer.id]">Edit</a>
        <button type="button" class="btn btn-outline-danger" (click)="offerDeleted.emit(offer.id)">Delete</button>
       </div>
     </div>

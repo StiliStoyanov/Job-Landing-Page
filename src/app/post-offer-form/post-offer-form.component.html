@@ -1,3 +1,4 @@
+<h3 class="mb-3">{{!offer.id ? 'Create new job': 'Update'}}</h3>
 <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
     <div class="form-group">
       <label for="title">Title</label>
@@ -21,5 +22,8 @@
 
     </div>
   
-    <button type="submit" class="btn btn-primary" [disabled]="formGroup.invalid" >Add new offer</button>
+    <button  type="submit" class="btn btn-primary"
+     [disabled]="formGroup.invalid" >{{!offer.id ? 'Add': 'Update'}}</button>
+
+     <a routerLink="/job-offers" class="btn btn-default">Cancel</a>
   </form>
