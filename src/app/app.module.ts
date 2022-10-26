@@ -14,6 +14,7 @@ import { FieldErrorMessageComponent } from './field-error-message/field-error-me
 import { ReactiveFormsModule } from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import { Route, RouterModule } from '@angular/router';
+import { LoginComponent } from './auth/login/login.component';
 
 const routes: Route[]=[
   {
@@ -39,7 +40,8 @@ const routes: Route[]=[
     PostOfferFormComponent,
     OffersViewComponent,
     OfferListComponent,
-    FieldErrorMessageComponent
+    FieldErrorMessageComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,13 @@
 {
+  "users":[
+    {
+      "id": 1,
+      "name": "Admin",
+      "username": "admin",
+      "password": "qwerty"
+
+    }
+  ],
   "offers": [
     {
       "id": 1,
