@@ -15,8 +15,17 @@ import { ReactiveFormsModule } from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import { Route, RouterModule } from '@angular/router';
 import { LoginComponent } from './auth/login/login.component';
+import { RegisterComponent } from './auth/register/register.component';
 
 const routes: Route[]=[
+  {
+    path: 'login',
+    component: LoginComponent
+  },
+  {
+    path: 'register',
+    component: RegisterComponent
+  },
   {
     path: 'job-offers',
     component:  OfferListComponent,
@@ -41,7 +50,8 @@ const routes: Route[]=[
     OffersViewComponent,
     OfferListComponent,
     FieldErrorMessageComponent,
-    LoginComponent
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
