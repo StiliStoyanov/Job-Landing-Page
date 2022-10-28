@@ -39,6 +39,8 @@ export class LoginComponent implements OnInit {
         this.errorMessage = 'Invalid username or password'
         return;
       }
+
+      this.authService.setLoggedUser(response)
       this.router.navigate(['job-offers'])
     })
     

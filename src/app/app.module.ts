@@ -16,27 +16,35 @@ import {HttpClientModule} from '@angular/common/http';
 import { Route, RouterModule } from '@angular/router';
 import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
+import { AuthGuard } from './auth/guards/auth.guard';
+import { NonAuthGuard } from './auth/guards/non-auth.guard';
 
 const routes: Route[]=[
   {
     path: 'login',
-    component: LoginComponent
+    component: LoginComponent,
+    canActivate: [NonAuthGuard]
+
   },
   {
     path: 'register',
-    component: RegisterComponent
+    component: RegisterComponent,
+    canActivate: [NonAuthGuard]
   },
   {
     path: 'job-offers',
     component:  OfferListComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'job-offers/create',
-    component: PostOfferFormComponent
+    component: PostOfferFormComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'job-offers/edit/:id',
-    component: PostOfferFormComponent
+    component: PostOfferFormComponent,
+    canActivate: [AuthGuard]
   }
 ]
 
