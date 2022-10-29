@@ -15,8 +15,9 @@ export class AuthGuard implements CanActivate{
     }
     canActivate(): boolean {
     const user = this.authService.getLoggedUser()
+    const org = this.authService.getLoggedOrg()
 
-    if (!user) {
+    if (!user && !org) {
         this.router.navigate(['login'])
         return false;
     }

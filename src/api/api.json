@@ -1,16 +1,28 @@
 {
-  "users": [
+  "organizations": [
     {
-      "id": 1,
-      "name": "Admin",
-      "username": "admin",
-      "password": "qwerty"
-    },
-    {
-      "name": "Stili",
-      "username": "stili111",
+      "username": "org123",
+      "email": "stilistoyanov1@gmail.com",
       "password": "123",
       "rePassword": "123",
+      "type": "organization",
+      "id": 1
+    }
+  ],
+  "users": [
+    {
+      "username": "admin",
+      "email": "stilistoyanov1@gmail.com",
+      "password": "123",
+      "rePassword": "123",
+      "id": 1
+    },
+    {
+      "username": "stili111",
+      "email": "stilistoyanov1@gmail.com",
+      "password": "123",
+      "rePassword": "123",
+      "type": "user",
       "id": 2
     }
   ],

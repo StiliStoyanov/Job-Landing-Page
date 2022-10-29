@@ -30,19 +30,39 @@ export class LoginComponent implements OnInit {
     const username = this.formGroup.value.username
     const password = this.formGroup.value.password
     
+    const type = this.formGroup.value.type
+  
+    if (type==="user") {
+      this.authService.loginUser(username, password).pipe(
+        take(1)
+      ).subscribe(response => {
+        if (!response) {
+          this.errorMessage = 'Invalid username or password'
+          return;
+        }
+  
+        this.authService.setLoggedUser(response)
+        this.router.navigate(['job-offers'])
+      })
+    }
+    else{
+      this.authService.loginOrg(username, password).pipe(
+        take(1)
+      ).subscribe(response => {
+        if (!response) {
+          this.errorMessage = 'Invalid username or password'
+          return;
+        }
+  
+        this.authService.setLoggedOrg(response)
+        this.router.navigate(['job-offers'])
+      })
+    }
+    
+    
     
 
-    this.authService.login(username, password).pipe(
-      take(1)
-    ).subscribe(response => {
-      if (!response) {
-        this.errorMessage = 'Invalid username or password'
-        return;
-      }
-
-      this.authService.setLoggedUser(response)
-      this.router.navigate(['job-offers'])
-    })
+   
     
     
     
@@ -52,8 +72,8 @@ export class LoginComponent implements OnInit {
   private buildForm(): void {
     this.formGroup = this.fb.group({
       username: ['', [Validators.required]],
-      password: ['', [Validators.required]]
-
+      password: ['', [Validators.required]],
+      type: ['', Validators.required]
     })
   }
 }
