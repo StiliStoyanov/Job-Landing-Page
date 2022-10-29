@@ -20,11 +20,16 @@ import { AuthGuard } from './auth/guards/auth.guard';
 import { NonAuthGuard } from './auth/guards/non-auth.guard';
 
 const routes: Route[]=[
+
+  {
+    path: '',
+    component: LoginComponent,
+    canActivate: [NonAuthGuard]
+  },
   {
     path: 'login',
     component: LoginComponent,
     canActivate: [NonAuthGuard]
-
   },
   {
     path: 'register',
@@ -59,7 +64,7 @@ const routes: Route[]=[
     OfferListComponent,
     FieldErrorMessageComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,
