@@ -7,6 +7,14 @@
       "rePassword": "123",
       "type": "organization",
       "id": 1
+    },
+    {
+      "username": "stilli",
+      "email": "stilistoyanov1@gmail.com",
+      "password": "123",
+      "rePassword": "123",
+      "type": "",
+      "id": 2
     }
   ],
   "users": [

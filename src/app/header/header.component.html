@@ -5,12 +5,19 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
-        <ng-container *ngIf="hasLoggedIn">
+        <ng-container *ngIf="hasLoggedInUser">
           <a class="nav-item nav-link" routerLink="job-offers">Home</a>
-          <a class="nav-item nav-link" routerLink="job-offers/create">Create new offer</a>
+          <a class="nav-item nav-link" routerLink="profile">Profile</a>
           <a  class="nav-item nav-link" (click)="onLogout()">Logout</a>
         </ng-container>
-        <ng-container *ngIf="!hasLoggedIn">
+        <ng-container *ngIf="hasLoggedInOrg">
+          <a class="nav-item nav-link" routerLink="job-offers">Home</a>
+          <a class="nav-item nav-link" routerLink="job-offers/create">Create new offer</a>
+          <a class="nav-item nav-link" routerLink="profile">Profile</a>
+          <a  class="nav-item nav-link" (click)="onLogout()">Logout</a>
+        </ng-container>
+
+        <ng-container *ngIf="!hasLoggedInUser && !hasLoggedInOrg">
           <a  class="nav-item nav-link" routerLink="login">Login</a>
         </ng-container>
   

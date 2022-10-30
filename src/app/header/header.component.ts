@@ -10,7 +10,9 @@ import { AuthService } from '../auth/auth.service';
 })
 export class HeaderComponent implements OnInit, OnDestroy {
 
-  hasLoggedIn !:boolean
+  hasLoggedInUser !:boolean
+  hasLoggedInOrg !:boolean
+
   destroy$ = new Subject<boolean>();
 
   constructor(private authService: AuthService,
@@ -19,9 +21,14 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.authService.getHasLoggedIn().pipe(
+    this.authService.getHasLoggedInUser().pipe(
       takeUntil(this.destroy$)
-    ).subscribe(hasLogged =>this.hasLoggedIn = hasLogged)
+    ).subscribe(hasLoggedUser =>this.hasLoggedInUser = hasLoggedUser)
+
+    this.authService.getHasLoggedInOrg().pipe(
+      takeUntil(this.destroy$)
+    ).subscribe(hasLoggedOrg =>this.hasLoggedInOrg = hasLoggedOrg)
+  
   }
   ngOnDestroy(): void {
     this.destroy$.next(true);

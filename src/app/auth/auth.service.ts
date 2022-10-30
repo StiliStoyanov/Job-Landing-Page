@@ -14,7 +14,9 @@ export class AuthService{
     urlOrg = 'http://localhost:3000/organizations'
 
 
-    private hasLoggedIn$ = new BehaviorSubject<boolean>(false)
+    private hasLoggedInUser$ = new BehaviorSubject<boolean>(false)
+    private hasLoggedInOrg$ = new BehaviorSubject<boolean>(false)
+
 
     constructor(private htpp: HttpClient){
 
@@ -48,18 +50,20 @@ export class AuthService{
     logout(): void {
     localStorage.removeItem('loggedUser')
     localStorage.removeItem('loggedOrg')
-    this.setHasLoggedIn(false)
+    this.setHasLoggedInUser(false)
+    this.setHasLoggedInOrg(false)
+
     }
 
     setLoggedUser(user: User): void{
         localStorage.setItem('loggedUser', JSON.stringify(user))
 
-        this.setHasLoggedIn(true)
+        this.setHasLoggedInUser(true)
     }
     setLoggedOrg(org: Organization): void{
         localStorage.setItem('loggedOrg', JSON.stringify(org))
 
-        this.setHasLoggedIn(true)
+        this.setHasLoggedInOrg(true)
     }
 
     getLoggedUser(): User{
@@ -68,10 +72,16 @@ export class AuthService{
     getLoggedOrg(): User{
         return JSON.parse(localStorage.getItem('loggedOrg')!)
     }
-    setHasLoggedIn(hasLogged: boolean): void{
-        this.hasLoggedIn$.next(hasLogged)
+    setHasLoggedInUser(hasLogged: boolean): void{
+        this.hasLoggedInUser$.next(hasLogged)
     }
-    getHasLoggedIn(): Observable<boolean>{
-        return this.hasLoggedIn$.asObservable();
+    getHasLoggedInUser(): Observable<boolean>{
+        return this.hasLoggedInUser$.asObservable();
+    }
+    setHasLoggedInOrg(hasLogged: boolean): void{
+        this.hasLoggedInOrg$.next(hasLogged)
+    }
+    getHasLoggedInOrg(): Observable<boolean>{
+        return this.hasLoggedInOrg$.asObservable();
     }
 }

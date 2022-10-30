@@ -18,6 +18,7 @@ import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { AuthGuard } from './auth/guards/auth.guard';
 import { NonAuthGuard } from './auth/guards/non-auth.guard';
+import { ProfileViewComponent } from './profile-view/profile-view.component';
 
 const routes: Route[]=[
 
@@ -50,6 +51,11 @@ const routes: Route[]=[
     path: 'job-offers/edit/:id',
     component: PostOfferFormComponent,
     canActivate: [AuthGuard]
+  },
+  {
+    path: 'profile',
+    component: ProfileViewComponent,
+    canActivate: [AuthGuard]
   }
 ]
 
@@ -65,6 +71,7 @@ const routes: Route[]=[
     FieldErrorMessageComponent,
     LoginComponent,
     RegisterComponent,
+    ProfileViewComponent,
   ],
   imports: [
     BrowserModule,
