@@ -69,7 +69,7 @@ export class AuthService{
     getLoggedUser(): User{
         return JSON.parse(localStorage.getItem('loggedUser')!)
     }
-    getLoggedOrg(): User{
+    getLoggedOrg(): Organization{
         return JSON.parse(localStorage.getItem('loggedOrg')!)
     }
     setHasLoggedInUser(hasLogged: boolean): void{

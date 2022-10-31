@@ -1,1 +1,22 @@
-<p>profile-view works!</p>
+<div class="card mb-3" style="max-width: 640px;">
+    <div class="row g-0">
+      <div class="col-md-4">
+        <ng-container *ngIf="logged.type==='user'">
+          <img src="{{imageSrcUser}}"  class="img-fluid rounded-start" alt="...">
+        </ng-container>
+        <ng-container *ngIf="logged.type==='organization'">
+          <img src="{{imageSrcOrg}}" class="img-fluid rounded-start" alt="...">
+        </ng-container>
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title">Username: {{logged.username}}</h5>
+          <p class="card-text">Email: {{logged.email}}</p>
+          <p class="card-text">Type: {{logged.type}}</p>
+       <button  type="button" class="btn btn-primary" >Edit</button>
+       <button type="button" class="btn btn-outline-danger" >Delete account</button>
+          
+        </div>
+      </div>
+    </div>
+  </div>

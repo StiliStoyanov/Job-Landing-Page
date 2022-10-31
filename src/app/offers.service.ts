@@ -24,7 +24,6 @@ export class OffersService{
     }
     updateOffer(offer:Offer): Observable<any>{
         const url = `${this.url}/${offer.id}`
-        console.log(offer);
         
         return this.http.put(url, offer)
         

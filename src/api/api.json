@@ -19,19 +19,20 @@
   ],
   "users": [
     {
-      "username": "admin",
-      "email": "stilistoyanov1@gmail.com",
-      "password": "123",
-      "rePassword": "123",
-      "id": 1
-    },
-    {
       "username": "stili111",
       "email": "stilistoyanov1@gmail.com",
       "password": "123",
       "rePassword": "123",
       "type": "user",
       "id": 2
+    },
+    {
+      "username": "admin",
+      "email": "stilistoyanov1@gmail.com",
+      "password": "123",
+      "rePassword": "123",
+      "type": "user",
+      "id": 3
     }
   ],
   "offers": [
