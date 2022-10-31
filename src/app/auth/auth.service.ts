@@ -18,15 +18,15 @@ export class AuthService{
     private hasLoggedInOrg$ = new BehaviorSubject<boolean>(false)
 
 
-    constructor(private htpp: HttpClient){
+    constructor(private http: HttpClient){
 
     }
 
     getUsers(): Observable<User[]>{
-        return this.htpp.get<User[]>(this.urlUsers)
+        return this.http.get<User[]>(this.urlUsers)
     }
     getOrg(): Observable<Organization[]>{
-        return this.htpp.get<User[]>(this.urlOrg)
+        return this.http.get<User[]>(this.urlOrg)
     }
 
     loginUser(username: string, password: string): Observable<any> {
@@ -41,10 +41,10 @@ export class AuthService{
     } 
 
     registerUser(data: User): Observable<User>{
-        return this.htpp.post<User>(this.urlUsers, data)
+        return this.http.post<User>(this.urlUsers, data)
     }
     registerOrg(data: Organization): Observable<Organization>{
-        return this.htpp.post<User>(this.urlOrg, data)
+        return this.http.post<User>(this.urlOrg, data)
     }
 
     logout(): void {
@@ -83,5 +83,13 @@ export class AuthService{
     }
     getHasLoggedInOrg(): Observable<boolean>{
         return this.hasLoggedInOrg$.asObservable();
+    }
+    updateUser(user:User): Observable<any>{
+        const url = `${this.urlUsers}/${user.id}`
+        return this.http.put(url, user)
+    }
+    updateOrg(org:Organization): Observable<any>{
+        const url = `${this.urlOrg}/${org.id}`
+        return this.http.put(url, org)   
     }
 }

@@ -19,6 +19,7 @@ import { RegisterComponent } from './auth/register/register.component';
 import { AuthGuard } from './auth/guards/auth.guard';
 import { NonAuthGuard } from './auth/guards/non-auth.guard';
 import { ProfileViewComponent } from './profile-view/profile-view.component';
+import { ProfileEditFormComponent } from './profile-edit-form/profile-edit-form.component';
 
 const routes: Route[]=[
 
@@ -56,6 +57,11 @@ const routes: Route[]=[
     path: 'profile',
     component: ProfileViewComponent,
     canActivate: [AuthGuard]
+  },
+  {
+    path: 'profile/users/:id',
+    component: ProfileEditFormComponent,
+    canActivate: [AuthGuard]
   }
 ]
 
@@ -72,6 +78,7 @@ const routes: Route[]=[
     LoginComponent,
     RegisterComponent,
     ProfileViewComponent,
+    ProfileEditFormComponent,
   ],
   imports: [
     BrowserModule,

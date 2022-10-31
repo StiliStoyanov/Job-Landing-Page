@@ -1,12 +1,11 @@
 {
   "organizations": [
     {
-      "username": "org123",
+      "id": 1,
+      "username": "org12345",
       "email": "stilistoyanov1@gmail.com",
-      "password": "123",
-      "rePassword": "123",
-      "type": "organization",
-      "id": 1
+      "password": "12345",
+      "type": "organization"
     },
     {
       "username": "stilli",
@@ -27,12 +26,11 @@
       "id": 2
     },
     {
-      "username": "admin",
+      "id": 3,
+      "username": "adminEdit",
       "email": "stilistoyanov1@gmail.com",
       "password": "123",
-      "rePassword": "123",
-      "type": "user",
-      "id": 3
+      "type": "user"
     }
   ],
   "offers": [

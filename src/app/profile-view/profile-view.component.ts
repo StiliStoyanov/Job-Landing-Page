@@ -20,7 +20,6 @@ export class ProfileViewComponent implements OnInit {
     if (!this.logged) {
       this.logged = this.authService.getLoggedOrg()
     }
-    console.log(this.logged);
     
   }
 
