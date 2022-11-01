@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { take } from 'rxjs';
+import { map, take } from 'rxjs';
 import { AuthService } from '../auth/auth.service';
+import { User } from '../auth/user.model';
 
 @Component({
   selector: 'app-profile-edit-form',
@@ -11,6 +12,7 @@ import { AuthService } from '../auth/auth.service';
 })
 export class ProfileEditFormComponent implements OnInit {
 
+  errorMessage !: string
   logged!: any
   formGroup!: FormGroup ;
 
@@ -46,24 +48,48 @@ export class ProfileEditFormComponent implements OnInit {
     }
    
     if (this.logged.type=='user') {
-      this.authService.updateUser(current).pipe(
+
+      this.authService.getUsers().pipe(
+        map((stream: User[])=>stream.find(user => user.username === current.username)),
         take(1)
-      ).subscribe(()=>{
-        this.router.navigate(['/profile'])
-      },(error)=>{
-        console.log(error);
+      ).subscribe(response =>{
+        if (response) {
+          this.errorMessage ='Username has already been taken'
+          return;
+        }
+        this.authService.updateUser(current).pipe(
+          take(1)
+        ).subscribe(()=>{
+          this.router.navigate(['/profile'])
+        },(error)=>{
+          console.log(error);
+        })
+        this.authService.setLoggedUser(current)
       })
-      this.authService.setLoggedUser(current)
+
+     
     }
     else{
-      this.authService.updateOrg(current).pipe(
+
+      this.authService.getOrg().pipe(
+        map((stream: User[])=>stream.find(org => org.username === current.username)),
         take(1)
-      ).subscribe(()=>{
-        this.router.navigate(['/profile'])
-      },(error)=>{
-        console.log(error);
+      ).subscribe(response =>{
+        if (response) {
+          this.errorMessage ='Username has already been taken'
+          return;
+        }
+        this.authService.updateOrg(current).pipe(
+          take(1)
+        ).subscribe(()=>{
+          this.router.navigate(['/profile'])
+        },(error)=>{
+          console.log(error);
+        })
+        this.authService.setLoggedOrg(current)
       })
-      this.authService.setLoggedOrg(current)
+
+    
     }
   }
 }

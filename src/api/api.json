@@ -8,26 +8,25 @@
       "type": "organization"
     },
     {
-      "username": "stilli",
+      "username": "org1",
       "email": "stilistoyanov1@gmail.com",
       "password": "123",
       "rePassword": "123",
-      "type": "",
+      "type": "organization",
       "id": 2
     }
   ],
   "users": [
     {
-      "username": "stili111",
+      "id": 2,
+      "username": "admin2",
       "email": "stilistoyanov1@gmail.com",
       "password": "123",
-      "rePassword": "123",
-      "type": "user",
-      "id": 2
+      "type": "user"
     },
     {
       "id": 3,
-      "username": "adminEdit",
+      "username": "admin",
       "email": "stilistoyanov1@gmail.com",
       "password": "123",
       "type": "user"
