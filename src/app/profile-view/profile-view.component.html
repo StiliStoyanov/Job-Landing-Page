@@ -14,7 +14,7 @@
           <p class="card-text">Email: {{logged.email}}</p>
           <p class="card-text">Type: {{logged.type}}</p>
        <button  type="button" class="btn btn-primary"  [routerLink]="['/profile', 'users', logged.id]">Edit</button>
-       <button type="button" class="btn btn-outline-danger" >Delete account</button>
+       <button type="button" class="btn btn-outline-danger" (click)="onDelete()" >Delete account</button>
           
         </div>
       </div>

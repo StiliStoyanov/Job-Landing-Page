@@ -92,5 +92,14 @@ export class AuthService{
         const url = `${this.urlOrg}/${org.id}`
         return this.http.put(url, org)   
     }
-    
+    deleteUser(id:number):Observable<any>{
+        const url = `${this.urlUsers}/${id}`
+        return this.http.delete(url)
+    }
+    deleteOrg(id:number):Observable<any>{
+        const url = `${this.urlOrg}/${id}`
+        console.log(url);
+        
+        return this.http.delete(url)
+    }
 }

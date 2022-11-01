@@ -1,13 +1,6 @@
 {
   "organizations": [
     {
-      "id": 1,
-      "username": "org12345",
-      "email": "stilistoyanov1@gmail.com",
-      "password": "12345",
-      "type": "organization"
-    },
-    {
       "username": "org1",
       "email": "stilistoyanov1@gmail.com",
       "password": "123",
@@ -17,13 +10,6 @@
     }
   ],
   "users": [
-    {
-      "id": 2,
-      "username": "admin2",
-      "email": "stilistoyanov1@gmail.com",
-      "password": "123",
-      "type": "user"
-    },
     {
       "id": 3,
       "username": "admin",
