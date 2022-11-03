@@ -2,6 +2,7 @@
 <div class="row">
   <div class="col-md-12">
     <app-offers-view [offers]="offers" (offerSelected)="onOfferSelect($event)"
-    (offerDeleted)="onOfferDelete($event)"></app-offers-view>
+    (offerDeleted)="onOfferDelete($event)" (offerSelected)="onOfferLike($event)"
+    (offerSelectedForApply)="onApply($event)"></app-offers-view>
   </div>
 </div>

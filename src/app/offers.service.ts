@@ -25,10 +25,9 @@ export class OffersService{
     updateOffer(offer:Offer): Observable<any>{
         const url = `${this.url}/${offer.id}`
         
-        return this.http.put(url, offer)
-        
-        
+        return this.http.put(url, offer) 
     }
+ 
     deleteOffer(id:number):Observable<any>{
         const url = `${this.url}/${id}`
         return this.http.delete(url)

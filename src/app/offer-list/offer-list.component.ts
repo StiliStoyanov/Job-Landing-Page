@@ -1,5 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Subject, takeUntil } from 'rxjs';
+import { Subject, take, takeUntil } from 'rxjs';
+import { AuthService } from '../auth/auth.service';
 import { Offer } from '../offer.interface';
 import { OffersService } from '../offers.service';
 
@@ -17,10 +18,12 @@ export class OfferListComponent implements OnInit, OnDestroy {
 
   destroy$ = new Subject<boolean>();
 
-  constructor(private offersService:OffersService) { 
+  constructor(private offersService:OffersService, private authService: AuthService) { 
     this.selectedOffer={
       title:'',
       description:'',
+      likes: 0,
+      type: ''
       
     }
   }
@@ -32,21 +35,38 @@ export class OfferListComponent implements OnInit, OnDestroy {
     this.destroy$.next(true)
     this.destroy$.unsubscribe();
   }
-  onPostSubmit(offer: Offer):void{
-    if (!this.offerId) {
-     
-      return; 
-    }
-   
-
-   
-  }
+ 
 
   onOfferSelect(offer:Offer): void{
     this.selectedOffer= offer;
     
     this.offerId = offer.id
   }
+  onOfferLike(offer:Offer): void{
+    offer.likes+=1
+    this.offersService.updateOffer(offer).pipe(
+      take(1)
+    ).subscribe(()=>{
+
+    }, (error)=>{
+      console.log(error);
+    })
+  }
+  onApply(offer: Offer): void{
+   
+     const user = this.authService.getLoggedUser()
+    user.appliedFor?.push(offer.id!)
+    
+    this.authService.updateUser(user).pipe(
+      take(1)
+    ).subscribe(()=>{
+
+    }, (error)=>{
+      console.log(error);
+    })
+  }
+  
+  
   onOfferDelete(offerId: number):void {
     this.offersService.deleteOffer(offerId).pipe(
       takeUntil(this.destroy$)

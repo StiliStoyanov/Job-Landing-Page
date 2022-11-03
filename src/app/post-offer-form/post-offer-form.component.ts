@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChanges } from '@angular/core';
 import { Offer } from '../offer.interface';
 import { ViewChild } from '@angular/core'
-import { FormBuilder, FormGroup, NgForm, Validators }   from '@angular/forms';
+import { FormBuilder, FormGroup, Validators }   from '@angular/forms';
 import { OffersService } from '../offers.service';
 import { Subject, take, takeUntil } from 'rxjs';
 import { ActivatedRoute, Params, Router } from '@angular/router';
@@ -24,7 +24,9 @@ export class PostOfferFormComponent implements OnInit, OnChanges, OnDestroy {
     private router: Router, private activatedRoute: ActivatedRoute) {
     this.offer={
       title: '',
-      description: ''
+      description: '',
+      type: '',
+      likes: 0
     }
    }
 
@@ -53,6 +55,8 @@ export class PostOfferFormComponent implements OnInit, OnChanges, OnDestroy {
       this.formGroup.get('id')?.setValue(this.offer.id)
       this.formGroup.get('title')?.setValue(this.offer.title)
       this.formGroup.get('description')?.setValue(this.offer.description)
+      this.formGroup.get('type')?.setValue(this.offer.type)
+      
     }
 
   }
@@ -66,6 +70,9 @@ export class PostOfferFormComponent implements OnInit, OnChanges, OnDestroy {
       ...this.formGroup.value,
 
     }
+    console.log(offer);
+    
+    
     if (!offer.id) {
       this.offersService.createOffer({...offer}).pipe(
         take(1)
@@ -90,7 +97,9 @@ export class PostOfferFormComponent implements OnInit, OnChanges, OnDestroy {
     this.formGroup= this.fb.group({
       id: this.offer.id,
       title:[this.offer.title,[Validators.required]],
-      description:[this.offer.description,[Validators.required]]
+      description:[this.offer.description,[Validators.required]],
+      type: [this.offer.type],
+      likes: 0
     })
   }
   private getOffer(id:number): void{

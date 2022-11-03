@@ -102,4 +102,7 @@ export class AuthService{
         
         return this.http.delete(url)
     }
+    // apply(offerId: number):Observable<any>{
+       
+    // }
 }
