@@ -1,0 +1,21 @@
+<h2 class="mb-4">List of the jobs that you have applied for</h2>
+
+
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Job ID</th>
+        <th scope="col">Job Title</th>
+        <th scope="col">Type:</th>
+        <th scope="col">Likes</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let offer of offers">
+        <td>{{offer.id}}</td>
+        <td>{{offer.title}}</td>
+        <td>{{offer.type}}</td>
+        <td>{{offer.likes}}</td>
+      </tr>
+    </tbody>
+  </table>

@@ -59,7 +59,7 @@ export class OfferListComponent implements OnInit, OnDestroy {
        user.appliedFor?.push(offer.id!)
        offer.idUsersApplied?.push(user.id!)
        this.offersService.updateOffer(offer).pipe(
-        take(1)
+        takeUntil(this.destroy$)
       ).subscribe(()=>{
       }, (error)=>{
         console.log(error);

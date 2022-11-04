@@ -8,6 +8,7 @@
         <ng-container *ngIf="hasLoggedInUser">
           <a class="nav-item nav-link" routerLink="job-offers">Home</a>
           <a class="nav-item nav-link" routerLink="profile">Profile</a>
+          <a  class="nav-item nav-link" routerLink="applied">Applied</a>
           <a  class="nav-item nav-link" (click)="onLogout()">Logout</a>
         </ng-container>
         <ng-container *ngIf="hasLoggedInOrg">

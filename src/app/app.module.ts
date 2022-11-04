@@ -20,6 +20,8 @@ import { AuthGuard } from './auth/guards/auth.guard';
 import { NonAuthGuard } from './auth/guards/non-auth.guard';
 import { ProfileViewComponent } from './profile-view/profile-view.component';
 import { ProfileEditFormComponent } from './profile-edit-form/profile-edit-form.component';
+import { AppliedViewComponent } from './applied-view/applied-view.component';
+import { ListCandidatesViewComponent } from './list-candidates-view/list-candidates-view.component';
 
 const routes: Route[]=[
 
@@ -62,6 +64,16 @@ const routes: Route[]=[
     path: 'profile/users/:id',
     component: ProfileEditFormComponent,
     canActivate: [AuthGuard]
+  },
+  {
+    path: 'applied',
+    component: AppliedViewComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'list-candidates/:id',
+    component: ListCandidatesViewComponent,
+    canActivate: [AuthGuard]
   }
 ]
 
@@ -79,6 +91,8 @@ const routes: Route[]=[
     RegisterComponent,
     ProfileViewComponent,
     ProfileEditFormComponent,
+    AppliedViewComponent,
+    ListCandidatesViewComponent,
   ],
   imports: [
     BrowserModule,

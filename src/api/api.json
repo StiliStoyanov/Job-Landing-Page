@@ -27,10 +27,22 @@
       "type": "user",
       "appliedFor": [
         5,
-        6,
         4
       ],
       "id": 5
+    },
+    {
+      "username": "newAdmin",
+      "email": "stilistoyanov1@gmail.com",
+      "password": "123",
+      "rePassword": "123",
+      "type": "user",
+      "appliedFor": [
+        4,
+        5,
+        6
+      ],
+      "id": 6
     }
   ],
   "offers": [
@@ -41,7 +53,8 @@
       "type": "full-time",
       "likes": 0,
       "idUsersApplied": [
-        5
+        5,
+        6
       ]
     },
     {
@@ -49,8 +62,11 @@
       "title": "IT position",
       "description": "Some description",
       "type": "remote",
-      "likes": 0,
-      "idUsersApplied": []
+      "likes": 1,
+      "idUsersApplied": [
+        5,
+        6
+      ]
     },
     {
       "id": 6,
@@ -59,8 +75,16 @@
       "type": "part-time",
       "likes": 0,
       "idUsersApplied": [
-        5
+        6
       ]
+    },
+    {
+      "id": 7,
+      "title": "NEW JOB",
+      "description": "NEW JOB ",
+      "type": "remote",
+      "likes": 0,
+      "idUsersApplied": []
     }
   ]
 }

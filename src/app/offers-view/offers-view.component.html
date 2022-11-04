@@ -12,6 +12,7 @@
        </ng-container>
        <ng-template  #loggedOrg>
         <a class="btn btn-link" [routerLink]="['/job-offers', 'edit', offer.id]">Edit</a>
+        <a class="btn btn-link" [routerLink]="['/list-candidates', offer.id]">List of candidates</a>
         <button type="button" class="btn btn-outline-danger" (click)="offerDeleted.emit(offer.id)">Delete</button>
       </ng-template >
       </div>
