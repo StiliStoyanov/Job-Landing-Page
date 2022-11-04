@@ -99,7 +99,7 @@ export class PostOfferFormComponent implements OnInit, OnChanges, OnDestroy {
       description:[this.offer.description,[Validators.required]],
       type: [this.offer.type],
       likes: 0,
-      idUsersApplied: [[]]
+      idUsersApplied: [{}]
 
     })
   }

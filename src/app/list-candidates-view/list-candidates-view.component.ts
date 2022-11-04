@@ -39,7 +39,7 @@ export class ListCandidatesViewComponent implements OnInit, OnDestroy {
           take(1)
         ).subscribe((response) =>{
           
-          this.usersApplied = response.filter((user)=>user.appliedFor!.includes(this.offer.id!))
+          this.usersApplied = response.filter((user)=>Object.keys(user.appliedFor!).map(Number).includes(this.offer.id!))
           
         })
         }, (error) => {
@@ -54,4 +54,33 @@ export class ListCandidatesViewComponent implements OnInit, OnDestroy {
     this.destroy$.unsubscribe();
   }
 
+  onAccept($event: any):void{
+     const userID =  $event.target.parentNode.firstChild.textContent;
+
+     if (!Object.values(this.offer.idUsersApplied!).includes("true")) {
+      this.authService.getUsers().pipe(
+        take(1)
+      ).subscribe((response)=>{
+       const user = response.find((u) => u.id == userID)
+       user!.appliedFor![this.offer.id!] = "true"
+       this.authService.updateUser(user!).pipe(
+        take(1)
+       ).subscribe(()=>{
+
+       })
+      })
+      this.offer!.idUsersApplied![userID] = "true"
+      this.offerService.updateOffer(this.offer).pipe(
+        take(1)
+      ).subscribe(()=>{
+
+      }, (error) =>{
+        console.log(error);
+        
+      })
+       
+     }
+      
+     
+  }
 }

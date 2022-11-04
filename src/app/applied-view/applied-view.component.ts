@@ -22,8 +22,7 @@ export class AppliedViewComponent implements OnInit {
     this.offerService.getOffers().pipe(
       take(1)
     ).subscribe((response)=>{
-      this.offers = response.filter((offer)=> offer.idUsersApplied?.includes(this.currentUser.id!))
-      console.log(this.offers);
+      this.offers = response.filter((offer)=> Object.keys(offer.idUsersApplied!).map(Number).includes(this.currentUser.id!))
       
     }, (error)=>{
       console.log(error);

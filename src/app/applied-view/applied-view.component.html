@@ -8,6 +8,7 @@
         <th scope="col">Job Title</th>
         <th scope="col">Type:</th>
         <th scope="col">Likes</th>
+        <th scope="col">Accepted(YES/NO)</th>
       </tr>
     </thead>
     <tbody>
@@ -16,6 +17,10 @@
         <td>{{offer.title}}</td>
         <td>{{offer.type}}</td>
         <td>{{offer.likes}}</td>
+        <td *ngIf="currentUser!.appliedFor![offer.id!] == 'true'; else template">YES</td>
+        <ng-template #template>
+            <td>NO</td>
+        </ng-template>
       </tr>
     </tbody>
   </table>

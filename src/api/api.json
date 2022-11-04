@@ -11,24 +11,16 @@
   ],
   "users": [
     {
-      "username": "newUser",
-      "email": "stilistoyanov1@gmail.com",
-      "password": "123",
-      "rePassword": "123",
-      "type": "user",
-      "appliedFor": [],
-      "id": 4
-    },
-    {
       "username": "admin",
       "email": "stilistoyanov1@gmail.com",
       "password": "123",
       "rePassword": "123",
       "type": "user",
-      "appliedFor": [
-        5,
-        4
-      ],
+      "appliedFor": {
+        "1": "true",
+        "2": "false",
+        "3": "true"
+      },
       "id": 5
     },
     {
@@ -37,54 +29,45 @@
       "password": "123",
       "rePassword": "123",
       "type": "user",
-      "appliedFor": [
-        4,
-        5,
-        6
-      ],
+      "appliedFor": {
+        "1": "false",
+        "2": "true"
+      },
       "id": 6
     }
   ],
   "offers": [
     {
-      "id": 4,
-      "title": "Teacher",
-      "description": "Some description",
-      "type": "full-time",
-      "likes": 0,
-      "idUsersApplied": [
-        5,
-        6
-      ]
-    },
-    {
-      "id": 5,
+      "id": 1,
       "title": "IT position",
       "description": "Some description",
       "type": "remote",
-      "likes": 1,
-      "idUsersApplied": [
-        5,
-        6
-      ]
+      "likes": 0,
+      "idUsersApplied": {
+        "5": "true",
+        "6": "false"
+      }
     },
     {
-      "id": 6,
-      "title": "Some other position",
+      "id": 2,
+      "title": "Teacher ",
       "description": "Some description",
+      "type": "full-time",
+      "likes": 0,
+      "idUsersApplied": {
+        "5": "false",
+        "6": "true"
+      }
+    },
+    {
+      "id": 3,
+      "title": "HR position",
+      "description": "testing",
       "type": "part-time",
       "likes": 0,
-      "idUsersApplied": [
-        6
-      ]
-    },
-    {
-      "id": 7,
-      "title": "NEW JOB",
-      "description": "NEW JOB ",
-      "type": "remote",
-      "likes": 0,
-      "idUsersApplied": []
+      "idUsersApplied": {
+        "5": "true"
+      }
     }
   ]
 }

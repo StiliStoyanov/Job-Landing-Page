@@ -55,9 +55,10 @@ export class OfferListComponent implements OnInit, OnDestroy {
   onApply(offer: Offer): void{
    
      const user = this.authService.getLoggedUser()
-     if (!user.appliedFor?.includes(offer.id!)) {
-       user.appliedFor?.push(offer.id!)
-       offer.idUsersApplied?.push(user.id!)
+     if (!Object.keys(user.appliedFor!).map(Number).includes(offer.id!)) {
+      const id = offer.id!
+       user.appliedFor![id] = "false"
+       offer.idUsersApplied![user.id!] = "false"
        this.offersService.updateOffer(offer).pipe(
         takeUntil(this.destroy$)
       ).subscribe(()=>{

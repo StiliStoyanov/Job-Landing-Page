@@ -15,6 +15,7 @@
         <td>{{user.id}}</td>
         <td>{{user.username}}</td>
         <td>{{user.email}}</td>
+        <button class="btn btn-outline-success" (click)="onAccept($event)"> Accept </button>
       </tr>
     </tbody>
     <ng-template #noUsersApplied>
