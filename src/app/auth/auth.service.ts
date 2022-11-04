@@ -88,6 +88,7 @@ export class AuthService{
         const url = `${this.urlUsers}/${user.id}`
         return this.http.put(url, user)
     }
+   
     updateOrg(org:Organization): Observable<any>{
         const url = `${this.urlOrg}/${org.id}`
         return this.http.put(url, org)   
@@ -102,7 +103,6 @@ export class AuthService{
         
         return this.http.delete(url)
     }
-    // apply(offerId: number):Observable<any>{
-       
-    // }
+   
+   
 }

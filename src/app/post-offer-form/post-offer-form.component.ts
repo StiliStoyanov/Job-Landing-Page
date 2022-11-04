@@ -70,7 +70,6 @@ export class PostOfferFormComponent implements OnInit, OnChanges, OnDestroy {
       ...this.formGroup.value,
 
     }
-    console.log(offer);
     
     
     if (!offer.id) {
@@ -99,7 +98,9 @@ export class PostOfferFormComponent implements OnInit, OnChanges, OnDestroy {
       title:[this.offer.title,[Validators.required]],
       description:[this.offer.description,[Validators.required]],
       type: [this.offer.type],
-      likes: 0
+      likes: 0,
+      idUsersApplied: [[]]
+
     })
   }
   private getOffer(id:number): void{

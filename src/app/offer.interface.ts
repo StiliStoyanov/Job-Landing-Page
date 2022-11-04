@@ -4,5 +4,6 @@ export interface Offer{
     description: string,
     type: string,
     likes: number,
-    clickedLike?: boolean
+    clickedLike?: boolean,
+    idUsersApplied?: number []
 }

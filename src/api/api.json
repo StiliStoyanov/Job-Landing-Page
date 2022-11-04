@@ -26,33 +26,41 @@
       "rePassword": "123",
       "type": "user",
       "appliedFor": [
-        3,
-        2
+        5,
+        6,
+        4
       ],
       "id": 5
     }
   ],
   "offers": [
     {
-      "id": 1,
-      "title": "IT Position",
+      "id": 4,
+      "title": "Teacher",
       "description": "Some description",
       "type": "full-time",
-      "likes": 10
+      "likes": 0,
+      "idUsersApplied": [
+        5
+      ]
     },
     {
-      "id": 2,
-      "title": "HR position",
-      "description": "testing",
+      "id": 5,
+      "title": "IT position",
+      "description": "Some description",
       "type": "remote",
-      "likes": 14
+      "likes": 0,
+      "idUsersApplied": []
     },
     {
-      "id": 3,
+      "id": 6,
       "title": "Some other position",
-      "description": "fdsfsfsfs",
-      "type": "full-time",
-      "likes": 8
+      "description": "Some description",
+      "type": "part-time",
+      "likes": 0,
+      "idUsersApplied": [
+        5
+      ]
     }
   ]
 }
