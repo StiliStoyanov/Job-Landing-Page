@@ -7,6 +7,15 @@
       "rePassword": "123",
       "type": "organization",
       "id": 2
+    },
+    {
+      "username": "org2",
+      "email": "stilistoyanov1@gmail.com",
+      "password": "123",
+      "rePassword": "123",
+      "type": "organization",
+      "appliedFor": {},
+      "id": 3
     }
   ],
   "users": [
@@ -19,7 +28,7 @@
       "appliedFor": {
         "1": "true",
         "2": "false",
-        "3": "true"
+        "3": "false"
       },
       "id": 5
     },
@@ -42,32 +51,35 @@
       "title": "IT position",
       "description": "Some description",
       "type": "remote",
-      "likes": 0,
+      "likes": 1,
       "idUsersApplied": {
         "5": "true",
         "6": "false"
-      }
+      },
+      "orgCreatedId": 2
     },
     {
       "id": 2,
-      "title": "Teacher ",
+      "title": "HR position",
       "description": "Some description",
       "type": "full-time",
       "likes": 0,
       "idUsersApplied": {
         "5": "false",
         "6": "true"
-      }
+      },
+      "orgCreatedId": 3
     },
     {
       "id": 3,
-      "title": "HR position",
-      "description": "testing",
+      "title": "Teacher 2",
+      "description": "Some description",
       "type": "part-time",
-      "likes": 0,
+      "likes": 1,
       "idUsersApplied": {
-        "5": "true"
-      }
+        "5": "false"
+      },
+      "orgCreatedId": 3
     }
   ]
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { AuthService } from '../auth/auth.service';
+import { Organization } from '../auth/org.model';
 import { User } from '../auth/user.model';
 import { Offer } from '../offer.interface';
 
@@ -14,16 +15,23 @@ export class OffersViewComponent  {
   clickedLike!: boolean
   loggedUser!: User
 
+  loggedOrg!: Organization
+
   @Input() offers?: Offer[]
   @Output() offerSelected = new EventEmitter<Offer>()
   @Output() offerSelectedForApply = new EventEmitter<Offer>()
   @Output() offerDeleted = new EventEmitter<number>()
   constructor(private authService: AuthService) {
     this.loggedUser = this.authService.getLoggedUser()
-   }
-   onEdit(id: number):void {
-    const offer = this.offers?.find(o=>o.id== id);
-    this.offerSelected.emit(offer)        
+    if (!this.loggedUser) {
+      this.loggedOrg = this.authService.getLoggedOrg()
+    }
+    
+  }
+  onEdit(id: number):void {
+    const offer = this.offers?.find(o=>o.id== id);      
+      this.offerSelected.emit(offer)        
+    
    }
 
   onLike(event:any, id: any): void{

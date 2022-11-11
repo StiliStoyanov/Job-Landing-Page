@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row mt-4">
   <div class="col-md-4" *ngFor="let offer of offers">
     <div class="card mb-4">
       <div class="card-body">
@@ -6,15 +6,16 @@
         <p class="card-text">Description: {{ offer.description }}</p>
         <p class="card-text">Type: {{ offer.type }}</p>
         <p class="card-text">Likes: {{ offer.likes }}</p>
-       <ng-container *ngIf="loggedUser; else loggedOrg">
+       <ng-container *ngIf="loggedUser;">
          <button type="button" class="btn btn-outline-success" (click)="onLike($event, offer.id)" >Like</button>
         <button type="button" class="btn btn-outline-success" (click)="onApply(offer.id)" >Apply</button>
        </ng-container>
-       <ng-template  #loggedOrg>
-        <a class="btn btn-link" [routerLink]="['/job-offers', 'edit', offer.id]">Edit</a>
-        <a class="btn btn-link" [routerLink]="['/list-candidates', offer.id]">List of candidates</a>
-        <button type="button" class="btn btn-outline-danger" (click)="offerDeleted.emit(offer.id)">Delete</button>
-      </ng-template >
+       <ng-container *ngIf="offer.orgCreatedId == loggedOrg?.id">
+          <a class="btn btn-link" [routerLink]="['/job-offers', 'edit', offer.id]">Edit</a>
+          <a class="btn btn-link" [routerLink]="['/list-candidates', offer.id]">List of candidates</a>
+          <button type="button" class="btn btn-outline-danger" (click)="offerDeleted.emit(offer.id)">Delete</button>
+       </ng-container>
+      
       </div>
     </div>
   </div>

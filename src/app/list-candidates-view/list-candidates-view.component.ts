@@ -15,6 +15,7 @@ export class ListCandidatesViewComponent implements OnInit, OnDestroy {
 
   offer!: Offer;
   usersApplied!: User[]
+  errorMessage!: string;
   destroy$ = new Subject<boolean>()
 
 
@@ -79,6 +80,9 @@ export class ListCandidatesViewComponent implements OnInit, OnDestroy {
         
       })
        
+     }
+     else{
+      this.errorMessage = "Another candidate was already accepted for this position"
      }
       
      

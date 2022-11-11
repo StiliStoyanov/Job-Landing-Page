@@ -5,5 +5,6 @@ export interface Offer{
     type: string,
     likes: number,
     clickedLike?: boolean,
-    idUsersApplied?: { [key: string]:  string;}
+    idUsersApplied?: { [key: string]:  string;},
+    orgCreatedId?: number
 }

@@ -1,8 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Subject, takeUntil } from 'rxjs';
+import { Subject, take, takeUntil } from 'rxjs';
 import { AuthService } from '../auth/auth.service';
 import { User } from '../auth/user.model';
+import { OffersService } from '../offers.service';
 
 @Component({
   selector: 'app-profile-view',
@@ -17,7 +18,7 @@ export class ProfileViewComponent implements OnInit, OnDestroy {
     logged!: any
 
   constructor( private authService: AuthService,
-    private router: Router) { }
+    private router: Router, private offerService: OffersService) { }
 
   ngOnInit(): void {
     this.logged = this.authService.getLoggedUser()
@@ -45,6 +46,20 @@ export class ProfileViewComponent implements OnInit, OnDestroy {
       this.authService.deleteOrg(this.logged.id).pipe(
         takeUntil(this.destroy$)
       ).subscribe(()=>{
+        this.offerService.getOffers().pipe(
+          take(1)
+        ).subscribe((response)=>{
+          const offersFromLoggedOrg = response.filter((offer)=>offer.orgCreatedId == this.logged.id)
+          offersFromLoggedOrg.forEach((offer)=>{
+            this.offerService.deleteOffer(offer.id!).pipe(
+              take(1)
+            ).subscribe(()=>{
+            })
+          })
+        },(error)=>{
+          console.log(error);
+          
+        })
        this.authService.logout()
       this.router.navigate(['login'])
       },(error)=>{

@@ -5,6 +5,7 @@ import { FormBuilder, FormGroup, Validators }   from '@angular/forms';
 import { OffersService } from '../offers.service';
 import { Subject, take, takeUntil } from 'rxjs';
 import { ActivatedRoute, Params, Router } from '@angular/router';
+import { AuthService } from '../auth/auth.service';
 
 @Component({
   selector: 'app-post-offer-form',
@@ -21,12 +22,13 @@ export class PostOfferFormComponent implements OnInit, OnChanges, OnDestroy {
 
 
   constructor(private fb: FormBuilder, private offersService: OffersService,
-    private router: Router, private activatedRoute: ActivatedRoute) {
+    private router: Router, private activatedRoute: ActivatedRoute, private authService: AuthService) {
     this.offer={
       title: '',
       description: '',
       type: '',
-      likes: 0
+      likes: 0,
+      orgCreatedId: 0
     }
    }
 
@@ -93,14 +95,15 @@ export class PostOfferFormComponent implements OnInit, OnChanges, OnDestroy {
 
   }
   buildForm(): void{
+    const loggedOrg = this.authService.getLoggedOrg()
     this.formGroup= this.fb.group({
       id: this.offer.id,
       title:[this.offer.title,[Validators.required]],
       description:[this.offer.description,[Validators.required]],
       type: [this.offer.type],
       likes: 0,
-      idUsersApplied: [{}]
-
+      idUsersApplied: [{}],
+      orgCreatedId: loggedOrg.id
     })
   }
   private getOffer(id:number): void{

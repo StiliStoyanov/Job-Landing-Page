@@ -1,4 +1,6 @@
 .container {
+  max-width: 100%;
+  background-color: #e8efef;
     display: flex;
     justify-content: space-around;
   }
