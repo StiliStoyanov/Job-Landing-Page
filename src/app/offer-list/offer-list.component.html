@@ -3,6 +3,6 @@
   <div class="col-md-12">
     <app-offers-view [offers]="offers" (offerSelected)="onOfferSelect($event)"
     (offerDeleted)="onOfferDelete($event)" (offerSelected)="onOfferLike($event)"
-    (offerSelectedForApply)="onApply($event)"></app-offers-view>
+    (offerSelectedForApply)="onApply($event)" [errorMessage]="errorMessage" [appliedMessage]="appliedMessage"></app-offers-view>
   </div>
 </div>

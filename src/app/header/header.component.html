@@ -10,12 +10,14 @@
           <a class="nav-item nav-link" routerLink="profile">Profile</a>
           <a  class="nav-item nav-link" routerLink="applied">Applied</a>
           <a  class="nav-item nav-link" (click)="onLogout()">Logout</a>
+          <a  class="nav-item nav-link welcome" >Welcome, {{logged.username}} </a>
         </ng-container>
         <ng-container *ngIf="hasLoggedInOrg">
           <a class="nav-item nav-link" routerLink="job-offers">Home</a>
           <a class="nav-item nav-link" routerLink="job-offers/create">Create new offer</a>
           <a class="nav-item nav-link" routerLink="profile">Profile</a>
           <a  class="nav-item nav-link" (click)="onLogout()">Logout</a>
+          <a  class="nav-item nav-link welcome" >Welcome, {{logged.username}} </a>
         </ng-container>
 
         <ng-container *ngIf="!hasLoggedInUser && !hasLoggedInOrg">
@@ -23,6 +25,10 @@
           <a  class="nav-item nav-link" routerLink="register">Register</a>
 
         </ng-container>
+      
+          
+
+        
   
 
       </div>

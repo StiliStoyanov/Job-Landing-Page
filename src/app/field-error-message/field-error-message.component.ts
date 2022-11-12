@@ -16,9 +16,10 @@ export class FieldErrorMessageComponent  {
     if (this.control.errors!['required']) {
       return 'This field is required!'
     }
-    
+    else if(this.control.errors!['minlength']){
+      return 'Password must be at least 5 characters long!'
+    }
   }
-
   return '';
  }
 

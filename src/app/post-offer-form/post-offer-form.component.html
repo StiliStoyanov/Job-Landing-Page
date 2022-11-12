@@ -49,10 +49,39 @@
         Remote
       </label>
     </div>
+
+    <div class="form-group ">
+      <p class="mt-4">Select category of the offer</p>
+      <input class="form-check-input" type="radio"
+       id="office-administration" checked
+       formControlName="category" 
+       value="office-administration">
+      <label class="form-check-label" for="category">
+        Office-administration
+      </label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="radio"
+       id="Development" 
+       formControlName="category"
+       value="development" >
+      <label class="form-check-label" for="category">
+        Development
+      </label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="radio"
+       id="education-and-training" 
+       formControlName="category"
+       value="education-and-training" >
+      <label class="form-check-label" for="category">
+        Education and training
+      </label>
+    </div>
     
   
     <button  type="submit" class="btn btn-primary"
-     [disabled]="formGroup.invalid" >{{!offer.id ? 'Add': 'Update'}}</button>
+     [disabled]="formGroup.invalid" >Add</button>
 
      <a routerLink="/job-offers" class="btn btn-default">Cancel</a>
   </form>

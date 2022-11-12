@@ -1,4 +1,8 @@
 <div class="row mt-4">
+    <p *ngIf="errorMessage; else success" class="text-danger text-center">{{errorMessage}}</p>
+    <ng-template #success >
+      <p class="text-success text-center">{{appliedMessage}}</p>
+    </ng-template>
   <div class="col-md-4" *ngFor="let offer of offers">
     <div class="card mb-4">
       <div class="card-body">
@@ -6,6 +10,7 @@
         <p class="card-text">Description: {{ offer.description }}</p>
         <p class="card-text">Type: {{ offer.type }}</p>
         <p class="card-text">Likes: {{ offer.likes }}</p>
+        <p class="card-text">Category: {{ offer.category }}</p>
        <ng-container *ngIf="loggedUser;">
          <button type="button" class="btn btn-outline-success" (click)="onLike($event, offer.id)" >Like</button>
         <button type="button" class="btn btn-outline-success" (click)="onApply(offer.id)" >Apply</button>

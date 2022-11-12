@@ -10,6 +10,7 @@ import { AuthService } from '../auth/auth.service';
 })
 export class HeaderComponent implements OnInit, OnDestroy {
 
+  logged !: any 
   hasLoggedInUser !:boolean
   hasLoggedInOrg !:boolean
 
@@ -23,11 +24,18 @@ export class HeaderComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.authService.getHasLoggedInUser().pipe(
       takeUntil(this.destroy$)
-    ).subscribe(hasLoggedUser =>this.hasLoggedInUser = hasLoggedUser)
+    ).subscribe(hasLoggedUser =>{
+      this.hasLoggedInUser = hasLoggedUser
+      this.logged = this.authService.getLoggedUser()
+    })
 
     this.authService.getHasLoggedInOrg().pipe(
       takeUntil(this.destroy$)
-    ).subscribe(hasLoggedOrg =>this.hasLoggedInOrg = hasLoggedOrg)
+    ).subscribe(hasLoggedOrg => {
+        this.hasLoggedInOrg = hasLoggedOrg
+        this.logged = this.authService.getLoggedOrg()
+
+      })
   
   }
   ngOnDestroy(): void {

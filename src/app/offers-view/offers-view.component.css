@@ -2,3 +2,6 @@
     background-color: #cde1e4;
     box-shadow: 0 0 20px 3px #d0d0d0;
 }
+button {
+    margin: 15px;
+}

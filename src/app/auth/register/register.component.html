@@ -21,6 +21,7 @@
                 id="username"
                 placeholder="Enter username..."
                 formControlName="username">
+                <app-field-error-message [control]="$any(formGroup).get('username')"></app-field-error-message>
             </div>
 
             <div class="form-group">
@@ -30,6 +31,7 @@
                  class="form-control" 
                  placeholder="Enter email..." 
                  formControlName="email">
+                <app-field-error-message [control]="$any(formGroup).get('email')"></app-field-error-message>
             </div>
 
             <div class="form-group mb-3">
@@ -39,6 +41,7 @@
                 id="password"
                 placeholder="Enter password..."
                 formControlName="password">
+                <app-field-error-message [control]="$any(formGroup).get('password')"></app-field-error-message>
             </div>
 
             <div class="form-group mb-3">
@@ -48,6 +51,7 @@
                 id="rePassword"
                 placeholder="Enter password again..."
                 formControlName="rePassword">
+                <app-field-error-message [control]="$any(formGroup).get('rePassword')"></app-field-error-message>
             </div>
 
             <div class="form-group mb-3">

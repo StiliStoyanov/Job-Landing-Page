@@ -11,6 +11,9 @@ import { OffersService } from '../offers.service';
 })
 export class OfferListComponent implements OnInit, OnDestroy {
 
+  errorMessage!: string;
+  appliedMessage!: string;
+
 
   offers!: Offer[];
   selectedOffer!: Offer;
@@ -56,6 +59,8 @@ export class OfferListComponent implements OnInit, OnDestroy {
    
      const user = this.authService.getLoggedUser()
      if (!Object.keys(user.appliedFor!).map(Number).includes(offer.id!)) {
+      this.appliedMessage = 'You have successfully applied for this job!'
+      this.errorMessage = ''
       const id = offer.id!
        user.appliedFor![id] = "false"
        offer.idUsersApplied![user.id!] = "false"
@@ -65,6 +70,10 @@ export class OfferListComponent implements OnInit, OnDestroy {
       }, (error)=>{
         console.log(error);
       })
+     }
+     else{
+      this.appliedMessage = ''
+      this.errorMessage = 'You have already applied for the job!'
      }
       
     this.authService.updateUser(user).pipe(

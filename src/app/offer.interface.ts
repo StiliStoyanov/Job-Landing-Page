@@ -6,5 +6,6 @@ export interface Offer{
     likes: number,
     clickedLike?: boolean,
     idUsersApplied?: { [key: string]:  string;},
-    orgCreatedId?: number
+    orgCreatedId?: number,
+    category?: string
 }

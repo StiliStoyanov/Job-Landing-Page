@@ -18,6 +18,8 @@ export class OffersViewComponent  {
   loggedOrg!: Organization
 
   @Input() offers?: Offer[]
+  @Input() errorMessage!: String;
+  @Input() appliedMessage!: String;
   @Output() offerSelected = new EventEmitter<Offer>()
   @Output() offerSelectedForApply = new EventEmitter<Offer>()
   @Output() offerDeleted = new EventEmitter<number>()
@@ -28,11 +30,13 @@ export class OffersViewComponent  {
     }
     
   }
-  onEdit(id: number):void {
-    const offer = this.offers?.find(o=>o.id== id);      
-      this.offerSelected.emit(offer)        
+  // onEdit(id: number):void {
+  //   const offer = this.offers?.find(o=>o.id== id);     
+  //   console.log(offer);
+     
+  //     this.offerSelected.emit(offer)        
     
-   }
+  //  }
 
   onLike(event:any, id: any): void{
      this.offer = this.offers?.find(o=>o.id== id);
@@ -43,6 +47,7 @@ export class OffersViewComponent  {
     const offer = this.offers?.find(o=>o.id== id);
     this.offerSelectedForApply.emit(offer)  
  }
+
   
 
 

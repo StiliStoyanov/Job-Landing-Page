@@ -1,7 +1,22 @@
+.navbar-brand{
+    margin-left: 15px;
+    font-size: 22px;
+    font-weight: 500;
+    
+}
+#navbarNavAltMarkup{
+    font-size: 18px;
+    font-weight: 500;
+}
 .navbar {
   background-color: #badada;
 }
 
 .btn{
     margin-right: 30px;
+}
+.welcome{
+    color: black;
+    margin-left: 550px;
+    font-weight: 700;
 }

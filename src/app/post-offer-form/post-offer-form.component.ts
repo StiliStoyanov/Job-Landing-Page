@@ -58,6 +58,8 @@ export class PostOfferFormComponent implements OnInit, OnChanges, OnDestroy {
       this.formGroup.get('title')?.setValue(this.offer.title)
       this.formGroup.get('description')?.setValue(this.offer.description)
       this.formGroup.get('type')?.setValue(this.offer.type)
+      this.formGroup.get('category')?.setValue(this.offer.category)
+
       
     }
 
@@ -100,10 +102,11 @@ export class PostOfferFormComponent implements OnInit, OnChanges, OnDestroy {
       id: this.offer.id,
       title:[this.offer.title,[Validators.required]],
       description:[this.offer.description,[Validators.required]],
-      type: [this.offer.type],
+      type: ['full-time',[Validators.required]],
       likes: 0,
       idUsersApplied: [{}],
-      orgCreatedId: loggedOrg.id
+      orgCreatedId: loggedOrg.id,
+      category: ['office-administration', [Validators.required]]
     })
   }
   private getOffer(id:number): void{
